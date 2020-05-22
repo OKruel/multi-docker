@@ -13,8 +13,9 @@ after_success:
   - docker build -t olavokruel/multi-nginx ./nginx
   - docker build -t olavokruel/multi-server ./server
   - docker build -t olavokruel/multi-worker ./worker
-#Log in to Docker CLI with environment variables in TRAVIS
-  - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin docker.io
+# Log in to Docker CLI with environment variables in TRAVIS
+  - docker login -u "DOCKER_ID" -p "DOCKER_PASSWORD"
+  # - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin docker.io
 #Push the built images into Docker Hub - Changed a few things
   - docker push olavokruel/multi-client
   - docker push olavokruel/multi-nginx
