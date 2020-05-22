@@ -15,22 +15,9 @@ after_success:
   - docker build -t olavokruel/multi-worker ./worker
   - docker build -t olavokruel/multi-nginx ./nginx
 #Log in to Docker CLI with environment variables in TRAVIS
-#Had to reconnect my github to docker hub
-  - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin docker.io
 #Push the built images into Docker Hub
   - docker push olavokruel/multi-client
   - docker push olavokruel/multi-server
   - docker push olavokruel/multi-worker
   - docker push olavokruel/multi-nginx
-
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "sa-east-1"
-#   app: "docker-react"
-#   env: "DockerReact-env"
-#   bucket_name: "elasticbeanstalk-sa-east-1-507590172939"
-#   bucket_path: "docker-react"
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key: $AWS_SECRET_KEY
