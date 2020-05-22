@@ -18,7 +18,7 @@ after_success:
   - docker login -u "DOCKER_ID" -p "DOCKER_PASSWORD" docker.io
   # - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin docker.io
 #Push the built images into Docker Hub
-  - docker push olavokruel/multi-client
-  - docker push olavokruel/multi-server
-  - docker push olavokruel/multi-worker
-  - docker push olavokruel/multi-nginx
+  - docker push olavokruel/multi-client:olavokruel/multi-client
+  - docker push olavokruel/multi-server:olavokruel/multi-client
+  - docker push olavokruel/multi-worker:olavokruel/multi-client
+  - docker push olavokruel/multi-nginx:olavokruel/multi-client
