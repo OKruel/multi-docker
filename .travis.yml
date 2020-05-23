@@ -21,3 +21,16 @@ after_success:
   - docker push olavokruel/multi-nginx
   - docker push olavokruel/multi-server
   - docker push olavokruel/multi-worker
+
+deploy:
+  # edge: true
+  provider: elasticbeanstalk
+  region: "sa-east-1"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-sa-east-1-507590172939"
+  bucket_path: "multi-docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
