@@ -16,6 +16,7 @@ after_success:
 # Log in to Docker CLI with environment variables in TRAVIS
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 #Push the built images into Docker Hub
+#Made this comment just to push again
   - docker push olavokruel/multi-client
   - docker push olavokruel/multi-nginx
   - docker push olavokruel/multi-server
